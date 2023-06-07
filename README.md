@@ -26,20 +26,15 @@ Data were extracted from images that were taken from genuine and forged banknote
 
 ### Dependencies
 
+- Docker
 - Python3
-- Pip ```sudo apt install python3-pip```
+- Pip
 
 ### Clone this repository
 
 ```git clone https://github.com/sunr00t/banking_notes_svm```
 
-### Install requirements
-
-[Scikit Learn](https://scikit-learn.org/stable/install.html)
-[Pandas](https://pandas.pydata.org/docs/getting_started/install.html)
-
-```pip install -r requirements.txt```
-
 ### Running
 
-```python ./main.py```
+1. ```docker build -t banking_notes .```
+2. ```docker run banking_notes```
