@@ -24,7 +24,7 @@ Data were extracted from images that were taken from genuine and forged banknote
   4. Entropy of image (continuous)
   5. Class (integer)
 
-### Packages
+### Dependencies
 
 - Python3
 - Pip ```sudo apt install python3-pip```
