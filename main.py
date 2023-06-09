@@ -1,13 +1,24 @@
 # %%
 import pandas as pd
+import matplotlib.pyplot as plt
+from matplotlib.colors import ListedColormap
 from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score
 
+
 # Importando os dados e renomeando os cabecalhos
 data = pd.read_csv("./src/banking_notes.csv", header=0, names=['variance', 'skewness', 'curtosis', 'entropy', 'classification'])
 print(data)
+# %%
+# Gráfico de dispersão
+fig, ax = plt.subplots()
+blue_bright = ListedColormap(["#076ac6"])
+eixo_x = data[data.columns[0]]
+eixo_y = data[data.columns[3]]
+ax.scatter(x=eixo_x, y=eixo_y, cmap=blue_bright, edgecolors="k",  alpha=0.3)
+plt.show()
 
 #indexação dos valores
 attributes = data[data.columns[0:4]]
