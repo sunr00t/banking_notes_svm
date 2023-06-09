@@ -1,6 +1,7 @@
 # %%
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
 from matplotlib.colors import ListedColormap
 from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split
@@ -13,11 +14,16 @@ data = pd.read_csv("./src/banking_notes.csv", header=0, names=['variance', 'skew
 print(data)
 # %%
 # Gráfico de dispersão
-fig, ax = plt.subplots()
-blue_bright = ListedColormap(["#076ac6"])
-eixo_x = data[data.columns[0]]
-eixo_y = data[data.columns[3]]
-ax.scatter(x=eixo_x, y=eixo_y, cmap=blue_bright, edgecolors="k",  alpha=0.3)
+fig = plt.figure()
+ax = fig.add_subplot(projection='3d')
+xs = data[data.columns[0]].tolist()
+ys = data[data.columns[1]].tolist()
+zs = data[data.columns[2]].tolist()
+gs = data[data.columns[3]].tolist()
+ax.scatter(xs, ys, zs, gs, alpha=0.3 )
+ax.set_xlabel('X')
+ax.set_ylabel('Y')
+ax.set_zlabel('Z')
 plt.show()
 
 #indexação dos valores
