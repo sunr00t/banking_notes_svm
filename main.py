@@ -17,6 +17,9 @@ data.shape
 sns.heatmap(data.corr(), annot=True, cmap='rocket_r',cbar=True,linewidths=0.2)
 plt.show()
 
+sns.pairplot(data, hue='classification')
+plt.show()
+
 classification = data['classification']
 print(data['classification'].value_counts())
 # %%
@@ -43,8 +46,8 @@ model = gnb.fit(x_train, y_train)
 
 # %%
 # Score dos Modelos
-preds = gnb.predict(x_test)
-accuracy = accuracy_score(y_test, preds) # Avaliando a eficácia dos testes
+y_pred = gnb.predict(x_test)
+accuracy = accuracy_score(y_test, y_pred) # Avaliando a eficácia dos testes
 print("NaiveBayes Score: -> ", accuracy)
 
 sv = SVC() # Função de classificação de SVC
