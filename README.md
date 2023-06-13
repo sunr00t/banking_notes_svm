@@ -33,7 +33,7 @@ Data were extracted from images that were taken from genuine and forged banknote
 
 ### Clone this repository
 
-```git clone https://github.com/sunr00t/banking_notes_svm```
+```git clone https://github.com/G5svm/banking_notes_svm```
 
 ### Running
 
