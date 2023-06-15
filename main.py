@@ -15,7 +15,7 @@ def home():
   return "Hello Flask"
   
 if __name__ == "__main__":
-  app.run(debug=True)
+  app.run(debug=True, host='0.0.0.0', port=5000)
   
 data = pd.read_csv("./src/banking_notes.csv", header=0, names=['variance', 'skewness', 'curtosis', 'entropy', 'classification'])
 classification = data['classification']

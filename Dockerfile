@@ -3,5 +3,5 @@ WORKDIR /app
 COPY . .
 RUN pip install --upgrade pi
 RUN pip install -r requirements.txt
-EXPOSE 5000
+EXPOSE 5000/tcp
 CMD ["python", "main.py"]
