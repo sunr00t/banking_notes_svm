@@ -7,7 +7,16 @@ from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score
+from flask import Flask
 
+app = Flask(__name__)
+@app.route("/")
+def home():
+  return "Hello Flask"
+  
+if __name__ == "__main__":
+  app.run(debug=True, host='0.0.0.0', port=5000)
+  
 data = pd.read_csv("./src/banking_notes.csv", header=0, names=['variance', 'skewness', 'curtosis', 'entropy', 'classification'])
 classification = data['classification']
 # %%
@@ -64,14 +73,15 @@ def show_scores():
   print ("Score do Modelo de Testes -> ", sv_model.score(x_test, y_test))
 
 # Simulando User Entries
-def user_entries():
-  user_entry = [[-5.0477, -5.8023, 11.244, -0.3901]]
+def user_entries(variance, curtosis, skewness, entropy ):
+  user_entry = [[variance, curtosis, skewness, entropy]]
   result = sv_model.predict(user_entry)
   if result == 1:
-    print('Nota Verdadeira')
+    response = print('Nota Verdadeira')
   elif result == 0:
-    print('Nota Falsa')
+    response = print('Nota Falsa')
   else:
-    print('Informe os valores')
-    
-user_entries()
+    response = print('Informe os valores')
+  return response
+
+home()
