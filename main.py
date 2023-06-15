@@ -84,4 +84,4 @@ def user_entries(variance, curtosis, skewness, entropy ):
     response = print('Informe os valores')
   return response
 
-user_entries(-5.0477, -5.8023, 11.244, -0.3901)
+home()
