@@ -7,6 +7,7 @@ from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score
+from flask import Flask
 
 data = pd.read_csv("./src/banking_notes.csv", header=0, names=['variance', 'skewness', 'curtosis', 'entropy', 'classification'])
 classification = data['classification']
@@ -73,5 +74,11 @@ def user_entries():
     print('Nota Falsa')
   else:
     print('Informe os valores')
+
+app = Flask(__name__)
+@app.route("/")
+def home():
+    return "Hello Flask"
     
-user_entries()
+if __name__ == "__main__":
+    app.run(debug=True)
