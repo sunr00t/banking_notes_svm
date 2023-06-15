@@ -7,40 +7,31 @@ from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score
-from flask import Flask
 
-app = Flask(__name__)
-@app.route("/")
-def home():
-  return "Hello Flask"
-  
-if __name__ == "__main__":
-  app.run(debug=True, host='0.0.0.0', port=5000)
-  
-data = pd.read_csv("./src/banking_notes.csv", header=0, names=['variance', 'skewness', 'curtosis', 'entropy', 'classification'])
-classification = data['classification']
+dataset = pd.read_csv("./src/banking_notes.csv", header=0, names=['variance', 'skewness', 'curtosis', 'entropy', 'classification'])
+classification = dataset['classification']
 # %%
 # Gráficos de Correlação
 def show_plots():
-  sns.heatmap(data.corr(), annot=True, cmap='rocket_r',cbar=True,linewidths=0.2)
+  sns.heatmap(dataset.corr(), annot=True, cmap='rocket_r',cbar=True,linewidths=0.2)
   plt.show()
-  sns.pairplot(data, hue='classification')
+  sns.pairplot(dataset, hue='classification')
   plt.show()
-  print(data['classification'].value_counts())
+  print(dataset['classification'].value_counts())
   
-  sns.countplot(x = classification, data = data)
-  sns.displot(data["variance"], height = 3, aspect = 1.5)
+  sns.countplot(x = classification, data = dataset)
+  sns.displot(dataset["variance"], height = 3, aspect = 1.5)
   plt.xlabel("variance")
-  sns.displot(data["curtosis"], height = 3, aspect = 1.5)
+  sns.displot(dataset["curtosis"], height = 3, aspect = 1.5)
   plt.xlabel("curtosis")
-  sns.displot(data["skewness"], height = 3, aspect = 1.5)
+  sns.displot(dataset["skewness"], height = 3, aspect = 1.5)
   plt.xlabel("skewness")
-  sns.displot(data["entropy"], height = 3, aspect = 1.5)
+  sns.displot(dataset["entropy"], height = 3, aspect = 1.5)
   plt.xlabel("entropy")
   plt.show()
 # %%
 # Treinando os dados
-attributes = data[data.columns[0:4]] #Indexação dos Atributos
+attributes = dataset[dataset.columns[0:4]] #Indexação dos Atributos
 # Treinando com 30% dos dados
 # 1ª Seq x_train = treino ~ x_test = testes
 # 2ª Seq y_train = treino ~ y_test = testes
@@ -76,12 +67,4 @@ def show_scores():
 def user_entries(variance, curtosis, skewness, entropy ):
   user_entry = [[variance, curtosis, skewness, entropy]]
   result = sv_model.predict(user_entry)
-  if result == 1:
-    response = print('Nota Verdadeira')
-  elif result == 0:
-    response = print('Nota Falsa')
-  else:
-    response = print('Informe os valores')
-  return response
-
-home()
+  return result[0]
