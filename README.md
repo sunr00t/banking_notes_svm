@@ -47,7 +47,8 @@ Data were extracted from images that were taken from genuine and forged banknote
 1. ```/``` ```http://IP_ADDRESS:5000/```
 2. ```/validate``` ```http://IP_ADDRESS:5000/validade```
 
-```[GET]```
+### Endpoint explain: 
+``` http://IP_ADDRESS:5000/validade [GET]```
 ```
 {
 	"variance": -2.6864,
