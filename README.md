@@ -1,4 +1,5 @@
-![python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-%157F1F.svg?style=for-the-badge&logo=flask&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-%23316192.svg?style=for-the-badge&logo=docker&logoColor=white)
 
 # banking_notes_svm
@@ -29,6 +30,7 @@ Data were extracted from images that were taken from genuine and forged banknote
 
 - Docker
 - Python3
+- Flask
 - Pip
 
 ### Clone this repository
@@ -39,3 +41,23 @@ Data were extracted from images that were taken from genuine and forged banknote
 
 1. ```docker build -t banking_notes .```
 2. ```docker run banking_notes```
+3. Check all running addresses like ```IP_ADDRESS:5000```
+
+### Routes
+1. ```/``` ```http://IP_ADDRESS:5000/```
+2. ```/validate``` ```http://IP_ADDRESS:5000/validade```
+
+```[GET]```
+```
+{
+	"variance": -2.6864,
+	"curtosis": -0.097265,
+	"skewness": 0.61663,
+	"entropy": 0.061192
+}
+```
+
+```RESPONSE```
+```
+1
+```
