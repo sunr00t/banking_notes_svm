@@ -40,15 +40,21 @@ Data were extracted from images that were taken from genuine and forged banknote
 ### Running
 
 1. ```docker build -t banking_notes .```
-2. ```docker run banking_notes```
-3. Check all running addresses like ```IP_ADDRESS:5000```
+2. ```docker run -p 5000:5000 banking_notes```
+3. Access webservice on ```http://localhost:5000```
 
 ### Routes
-1. ```/``` ```http://IP_ADDRESS:5000/```
-2. ```/validate``` ```http://IP_ADDRESS:5000/validade```
+1. ```/``` ```http://localhost:5000/```
+2. ```/validate``` ```http://localhost:5000/validade```
 
 ### Endpoint explain: 
-``` http://IP_ADDRESS:5000/validade [GET]```
+
+``` http://localhost:5000 [GET]```
+```
+HealthCheck: 2023-06-16 00:43:14.414213
+````
+
+``` http://localhost:5000/validade [GET]```
 ```
 {
 	"variance": -2.6864,
