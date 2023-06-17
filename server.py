@@ -1,8 +1,11 @@
 from datetime import datetime
 from flask import Flask, request, json
+from flask_cors import CORS
 import main as ia
+import logging
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/", methods=['GET'])
 def health():
@@ -10,7 +13,7 @@ def health():
     msg = "HealthCheck: " + str(now)
     return msg
   
-@app.route("/validate", methods=['GET'])
+@app.route("/validate", methods=['POST'])
 def flask():
     content = json.loads(request.data)
     v = json.dumps(content['variance'])
@@ -18,7 +21,12 @@ def flask():
     s = json.dumps(content['skewness'])
     e = json.dumps(content['entropy'])
     predict = ia.user_entries(v, c, s, e)
-    return str(predict)
+    print("HOST: ",request.remote_addr, "Predict: " + str(predict))
+    return json.dumps(predict, default=str)
 
 if __name__ == "__main__":
   app.run(debug=True, host='0.0.0.0', port=5000)
+  
+logging.basicConfig()
+logging.getLogger('flask_cors').level = logging.DEBUG
+  
