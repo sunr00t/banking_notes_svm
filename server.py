@@ -10,7 +10,7 @@ CORS(app)
 @app.route("/", methods=['GET'])
 def health():
     now = datetime.now()
-    msg = "HealthCheck:" + str(now)
+    msg = str(now)
     return json.dumps(msg)
   
 @app.route("/validate", methods=['POST'])
