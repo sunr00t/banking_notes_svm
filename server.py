@@ -11,7 +11,7 @@ CORS(app)
 def health():
     now = datetime.now()
     msg = "HealthCheck: " + str(now)
-    return msg
+    return json.dumps(msg)
   
 @app.route("/validate", methods=['POST'])
 def flask():
@@ -22,7 +22,7 @@ def flask():
     e = json.dumps(content['entropy'])
     predict = ia.user_entries(v, c, s, e)
     print("HOST:",request.remote_addr, "| Predict: " + str(predict))
-    return str(predict)
+    return predict
 
 if __name__ == "__main__":
   app.run(debug=True, host='0.0.0.0', port=5000)
