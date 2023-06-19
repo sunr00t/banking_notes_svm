@@ -21,12 +21,17 @@ def flask():
     s = json.dumps(content['skewness'])
     e = json.dumps(content['entropy'])
     predict = ia.user_entries(v, c, s, e)
+<<<<<<< HEAD
     print("HOST:",request.remote_addr, "| Predict: " + str(predict))
     return predict
+=======
+    print("HOST: ",request.remote_addr, "Predict: " + str(predict))
+    return json.dumps(predict, default=str)
+>>>>>>> parent of 12b24a4 (update flask debug level)
 
 if __name__ == "__main__":
   app.run(debug=True, host='0.0.0.0', port=5000)
   
 logging.basicConfig()
-logging.getLogger('flask_cors').level = logging.INFO
+logging.getLogger('flask_cors').level = logging.DEBUG
   
