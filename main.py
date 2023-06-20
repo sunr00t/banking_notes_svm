@@ -5,14 +5,13 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split
-from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score
 
 dataset = pd.read_csv("./src/banking_notes.csv", header=0, names=['variance', 'skewness', 'curtosis', 'entropy', 'classification'])
 classification = dataset['classification']
 # %%
 # Gráficos de Correlação
-def show_plots():
+def show_graphs():
   sns.heatmap(dataset.corr(), annot=True, cmap='rocket_r',cbar=True,linewidths=0.2)
   plt.show()
   sns.pairplot(dataset, hue='classification')
@@ -57,3 +56,6 @@ def user_entries(variance, curtosis, skewness, entropy ):
   user_entry = [[variance, curtosis, skewness, entropy]]
   result = svc_model.predict(user_entry)
   return result[0]
+
+show_graphs()
+show_scores()
