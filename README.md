@@ -30,8 +30,14 @@ Data were extracted from images that were taken from genuine and forged banknote
 
 - Docker
 - Python3
-- Flask
 - Pip
+- Flask
+- Flask_Cors
+- Joblib
+- Pandas
+- Scikit Learn
+- Matplotlib
+- Seaborn
 
 ### Clone this repository
 
@@ -49,7 +55,7 @@ Data were extracted from images that were taken from genuine and forged banknote
 
 ### Endpoint explain: 
 
-``` http://localhost:5000 [GET]```
+``` http://localhost:5000 [POST]```
 ```
 HealthCheck: 2023-06-16 00:43:14.414213
 ````
