@@ -67,8 +67,8 @@ def test_save_model():
     loaded_model = joblib.load('./model/banking.pkl')
     print(loaded_model.predict(x_test))
     
-show_graphs()
+# show_graphs()
 show_scores()
-save_model()
-test_save_model()
+# save_model()
+# test_save_model()
 
