@@ -70,3 +70,6 @@ def test_save_model():
 # show_graphs()
 # show_scores()
 save_model()
+test_save_model()
+user_entries
+
