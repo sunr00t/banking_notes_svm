@@ -37,34 +37,23 @@ attributes = dataset[dataset.columns[0:4]] #Indexação dos Atributos
 # 2ª Seq y_train = treino ~ y_test = testes
 x_train, x_test, y_train, y_test = train_test_split(attributes,classification, test_size=0.30, random_state=28)
 
-# Funcao de classificação de Gaussian Naive Bayes
-gnb = GaussianNB() 
-
-# Função de classificação de SVC
-sv = SVC() 
-model = gnb.fit(x_train, y_train)
-
 # %%
-# Treinando o modelo
-sv_model = sv.fit(x_train, y_train) 
-# Fazendo Previsoes
-sv_preds = sv.predict(x_test)
+# Treinando o Modelo svm.LinearSVC
+svc = SVC() 
+svc_model = svc.fit(x_train, y_train) 
+svc_preds = svc.predict(x_test)
 
 # Score dos Modelos
 def show_scores():
-  y_pred = gnb.predict(x_test)
-  # Avaliando a eficácia dos testes
-  accuracy = accuracy_score(y_test, y_pred) 
-  print("NaiveBayes Score: -> ", accuracy)
   # Avaliando a Eficacia
-  sv_accuracy = accuracy_score(y_test, sv_preds) 
-  print("SVM Score -> ", sv_accuracy)
+  svm_accuracy = accuracy_score(y_test, svc_preds) 
+  print("SVM Score -> ", svm_accuracy)
   # Coeficiente de determinação 
-  print ("Score Modelo Treinado -> ", sv_model.score(x_train, y_train)) 
-  print ("Score do Modelo de Testes -> ", sv_model.score(x_test, y_test))
+  print ("Score Modelo SVC -> ", svc_model.score(x_train, y_train)) 
+  print ("Score dos Testes (Modelo SVC) -> ", svc_model.score(x_test, y_test))
 
 # Simulando User Entries
 def user_entries(variance, curtosis, skewness, entropy ):
   user_entry = [[variance, curtosis, skewness, entropy]]
-  result = sv_model.predict(user_entry)
+  result = svc_model.predict(user_entry)
   return result[0]
