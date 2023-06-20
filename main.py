@@ -60,16 +60,15 @@ def user_entries(variance, curtosis, skewness, entropy ):
 
 # Salvando Modelo
 def save_model():
-  joblib.dump(svc_model, './src/banking.pkl')
+  joblib.dump(svc_model, './model/banking.pkl')
 
 # Importando Modelo
 def test_save_model():
-    loaded_model = joblib.load('./src/banking.pkl')
+    loaded_model = joblib.load('./model/banking.pkl')
     print(loaded_model.predict(x_test))
     
-# show_graphs()
-# show_scores()
+show_graphs()
+show_scores()
 save_model()
 test_save_model()
-user_entries
 
