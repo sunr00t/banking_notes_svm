@@ -3,6 +3,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import joblib
 from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
@@ -57,5 +58,16 @@ def user_entries(variance, curtosis, skewness, entropy ):
   result = svc_model.predict(user_entry)
   return result[0]
 
-show_graphs()
-show_scores()
+# Salvando Modelo
+def save_model():
+  joblib.dump(svc_model, './src/banking.pkl')
+
+# Importando Modelo
+def test_save_model():
+    loaded_model = joblib.load('./src/banking.pkl')
+    print(loaded_model.predict(x_test))
+    
+# show_graphs()
+# show_scores()
+# save_model()
+test_save_model()
