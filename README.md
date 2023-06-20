@@ -55,12 +55,12 @@ Data were extracted from images that were taken from genuine and forged banknote
 
 ### Endpoint explain: 
 
-``` http://localhost:5000 [POST]```
+``` http://localhost:5000 [GET]```
 ```
 HealthCheck: 2023-06-16 00:43:14.414213
 ````
 
-``` http://localhost:5000/validade [GET]```
+``` http://localhost:5000/validade [POST]```
 ```
 {
 	"variance": -2.6864,
