@@ -1,12 +1,13 @@
+# banking_notes_svm
+
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Flask](https://img.shields.io/badge/Flask-%157F1F.svg?style=for-the-badge&logo=flask&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-%23316192.svg?style=for-the-badge&logo=docker&logoColor=white)
 
-# banking_notes_svm
-
 Using Machine Learning (Scikit Learn) to building data analysis, training and evaluating a model Bank Note Authentication.
 
 ## Getting Started
+
 **Dataset** ```/src/banking_notes.csv```
 
 Data were extracted from images that were taken from genuine and forged banknote-like specimens. For digitization, an industrial camera usually used for print inspection was used. The final images have 400x 400 pixels. Due to the object lens and distance to the investigated object gray-scale pictures with a resolution of about 660 dpi were gained. Wavelet Transform tool were used to extract features from images.
@@ -50,27 +51,33 @@ Data were extracted from images that were taken from genuine and forged banknote
 3. Access webservice on ```http://localhost:5000```
 
 ### Routes
+
 1. ```/``` ```http://localhost:5000/```
 2. ```/validate``` ```http://localhost:5000/validade```
 
 ### Endpoint explain: 
 
-``` http://localhost:5000 [GET]```
-```
-HealthCheck: 2023-06-16 00:43:14.414213
+```http://localhost:5000 [GET]```
+
+```json
+2023-06-16 00:43:14.414213
 ````
 
-``` http://localhost:5000/validade [POST]```
-```
+```http://localhost:5000/validade [POST]```
+
+```json
 {
-	"variance": -2.6864,
-	"curtosis": -0.097265,
-	"skewness": 0.61663,
-	"entropy": 0.061192
+ "variance": -2.6864,
+ "curtosis": -0.097265,
+ "skewness": 0.61663,
+ "entropy": 0.061192
 }
 ```
 
 ```RESPONSE```
-```
-1
+
+```json
+{
+ "classification": "1"
+}
 ```
