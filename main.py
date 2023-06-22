@@ -6,7 +6,7 @@ import seaborn as sns
 import joblib
 from sklearn.svm import SVC
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
 dataset = pd.read_csv(
     "./src/banking_notes.csv",
@@ -36,6 +36,9 @@ def show_graphs():
     plt.xlabel("entropy")
     plt.show()
 
+    cm = confusion_matrix(y_test, y_pred)
+    sns.heatmap(cm, annot=True, fmt="d").set_title("Matrix de Confusão com linear SVM")
+
 
 # %%
 # Treinando os dados
@@ -49,19 +52,21 @@ x_train, x_test, y_train, y_test = train_test_split(
 
 # %%
 # Treinando o Modelo svm.LinearSVC
-svc = SVC()
+svc = SVC(kernel="linear")
 svc_model = svc.fit(x_train, y_train)
-svc_preds = svc.predict(x_test)
+y_pred = svc.predict(x_test)
 
 
 # Score dos Modelos
 def show_scores():
     # Avaliando a Eficacia
-    svm_accuracy = accuracy_score(y_test, svc_preds)
+    svm_accuracy = accuracy_score(y_test, y_pred)
     print("SVM Score -> ", svm_accuracy)
     # Coeficiente de determinação
     print("Score Modelo SVC -> ", svc_model.score(x_train, y_train))
     print("Score dos Testes (Modelo SVC) -> ", svc_model.score(x_test, y_test))
+
+    print(classification_report(y_test, y_pred))
 
 
 # Simulando User Entries
@@ -82,7 +87,7 @@ def test_save_model():
     print(loaded_model.predict(x_test))
 
 
-# show_graphs()
+show_graphs()
 show_scores()
 # save_model()
 # test_save_model()
