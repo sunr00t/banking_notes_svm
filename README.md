@@ -59,7 +59,7 @@ Data were extracted from images that were taken from genuine and forged banknote
 
 ```http://localhost:5000 [GET]```
 
-```json
+```
 2023-06-16 00:43:14.414213
 ````
 
